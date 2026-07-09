@@ -167,5 +167,56 @@
       { "model": "Nano Pot", "price": null }
     ],
     "Uwel": []
+  },
+  "liquid": {
+    "Pedia": [
+      { "model": "Creamy", "price": 45000 },
+      { "model": "Ice", "price": 45000 }
+    ],
+    "Juta": [
+      { "model": "Bubblegum", "price": 40000 },
+      { "model": "Ice Cream", "price": 40000 },
+      { "model": "Fruity", "price": 40000 },
+      { "model": "Mild", "price": 40000 }
+    ],
+    "Movi": [
+      { "model": "Lokaal", "price": 45000 }
+    ],
+    "Foom": [
+      { "model": "Icy", "price": 58000 }
+    ],
+    "Cracks": [
+      { "model": "Ice Cream", "price": 45000 },
+      { "model": "Creamy", "price": 45000 }
+    ],
+    "Buaqita": [
+      { "model": "Ice Cream", "price": 50000 },
+      { "model": "Fruity", "price": 50000 }
+    ],
+    "Hanna": [
+      { "model": "Creamy", "price": 40000 },
+      { "model": "Fruity", "price": 40000 },
+      { "model": "Ice Cream", "price": 40000 },
+      { "model": "Bubblegum", "price": 40000 }
+    ],
+    "Wise Juice": [
+      { "model": "Happy Krunch", "price": 45000 }
+    ],
+    "Nixx": [
+      { "model": "Salt 30mg", "price": 65000 },
+      { "model": "Salt 15mg", "price": null }
+    ],
+    "Omnipod": [
+      { "model": "Creamy", "price": 40000 },
+      { "model": "Fruity", "price": 40000 },
+      { "model": "Ice Cream", "price": 40000 },
+      { "model": "Bubblegum", "price": 40000 }
+    ],
+    "Fruitylicious": [
+      { "model": "Salt 25mg", "price": 40000 }
+    ],
+    "Flame": [
+      { "model": "Salt 30mg", "price": 40000 }
+    ]
   }
 }
