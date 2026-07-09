@@ -23,6 +23,8 @@
                         <option value="all">Semua Kategori</option>
                         <option value="Catridge">Catridge</option>
                         <option value="Device Pod">Device Pod</option>
+                        <!-- Kategori baru ditambahkan -->
+                        <option value="Liquid">Liquid</option> 
                     </select>
                 </div>
             </div>
@@ -38,7 +40,6 @@
         </header>
 
         <div id="productContainer" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            <!-- Loading indicator saat fetch data -->
             <div class="col-span-full text-center py-10 text-gray-500">Memuat data...</div>
         </div>
     </div>
@@ -53,16 +54,18 @@
         const btnGrid = document.getElementById('btnGrid');
         const btnList = document.getElementById('btnList');
 
-        // Fungsi untuk mengambil data JSON dari file eksternal
         async function fetchProducts() {
             try {
+                // Saat dideploy ke GitHub pages, file ini dipanggil via HTTP
                 const response = await fetch('data.json');
                 if (!response.ok) throw new Error('Network response was not ok');
                 const rawData = await response.json();
 
-                // Flattening Data
+                // Flattening Data dengan 3 kategori
                 for (const type in rawData) {
-                    const categoryName = type === 'catridge' ? 'Catridge' : 'Device Pod';
+                    // Update penamaan kategori
+                    const categoryName = type === 'catridge' ? 'Catridge' : type === 'device_pod' ? 'Device Pod' : 'Liquid';
+                    
                     for (const brand in rawData[type]) {
                         rawData[type][brand].forEach(item => {
                             products.push({
@@ -77,17 +80,15 @@
                     }
                 }
                 
-                // Render pertama kali setelah data berhasil diambil
                 setView(currentView);
             } catch (error) {
                 console.error("Gagal memuat data:", error);
                 container.innerHTML = `<div class="col-span-full text-center py-10 text-red-500 font-semibold">
-                    Gagal memuat data (CORS/File Error). Pastikan Anda menjalankan file ini menggunakan Local Server (seperti Live Server).
+                    Gagal memuat data. Periksa konsol browser.
                 </div>`;
             }
         }
 
-        // Fungsi Render Data HTML
         function renderData() {
             const searchText = searchInput.value.toLowerCase();
             const selectedCategory = categoryFilter.value;
@@ -123,7 +124,6 @@
             }
         }
 
-        // Fungsi Toggle View & Simpan ke Cache
         window.setView = function(view) {
             currentView = view;
             localStorage.setItem('viewPreference', view);
@@ -139,11 +139,9 @@
             renderData();
         }
 
-        // Event Listeners
         searchInput.addEventListener('input', renderData);
         categoryFilter.addEventListener('change', renderData);
 
-        // Eksekusi Fetch saat halaman dimuat
         fetchProducts();
     </script>
 </body>
