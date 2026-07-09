@@ -1,0 +1,171 @@
+{
+  "catridge": {
+    "Oxva": [
+      { "model": "Artio", "resistance": ["0.8"], "price": 40000 },
+      { "model": "Vprime", "resistance": ["0.2", "0.4", "0.6", "0.8"], "price": 50000 },
+      { "model": "Xlim", "resistance": ["0.4", "0.6", "0.8"], "price": 40000 },
+      { "model": "Xlim DNA", "resistance": ["0.4", "0.6", "0.8"], "price": 45000 },
+      { "model": "Oneo", "resistance": ["0.4", "0.6", "0.8"], "price": 45000 },
+      { "model": "Unipro", "resistance": ["0.15"], "price": 35000 },
+      { "model": "Unicoil", "resistance": ["0.3"], "price": 35000 }
+    ],
+    "Foom": [
+      { "model": "X", "resistance": [], "price": 35000 },
+      { "model": "X Ultra", "resistance": [], "price": 38000 },
+      { "model": "Y", "resistance": [], "price": 40000 }
+    ],
+    "Vaporesso": [
+      { "model": "Xros", "resistance": ["0.6", "0.8"], "price": 40000 }
+    ],
+    "Nixx": [
+      { "model": "Pod", "resistance": [], "price": 40000 }
+    ],
+    "Lost Vape": [
+      { "model": "Ursa nano", "resistance": ["0.6", "0.8"], "price": 40000 },
+      { "model": "Eplus", "resistance": ["0.3", "0.6", "0.8"], "price": 40000 },
+      { "model": "UB Ultra", "resistance": ["0.15", "0.2", "0.3"], "price": 35000 },
+      { "model": "UB Lite", "resistance": ["0.3", "0.6", "0.8"], "price": 35000 }
+    ],
+    "Trml": [
+      { "model": "T28", "resistance": ["0.6", "0.8"], "price": 35000 }
+    ],
+    "Orca Vape": [
+      { "model": "San Dynasty", "resistance": ["0.4", "0.6", "0.8"], "price": 40000 }
+    ],
+    "Dotmod": [
+      { "model": "Dotpod", "resistance": ["0.6", "0.8"], "price": 40000 }
+    ],
+    "Relx": [
+      { "model": "Prime", "resistance": ["0.6", "0.8"], "price": 40000 }
+    ],
+    "Geekvape": [
+      { "model": "M1", "resistance": ["0.8", "1.2"], "price": 40000 },
+      { "model": "K1", "resistance": [], "price": null },
+      { "model": "B", "resistance": ["0.3", "0.6"], "price": null }
+    ],
+    "Oumier": [
+      { "model": "Wasp Nano", "resistance": ["0.6", "0.8"], "price": 35000 }
+    ],
+    "Voopoo": [
+      { "model": "Vmate", "resistance": ["0.7"], "price": 45000 },
+      { "model": "Drag Nano", "resistance": ["0.8", "1.2"], "price": 40000 },
+      { "model": "Argus", "resistance": ["0.4", "0.7", "1.2"], "price": 40000 },
+      { "model": "PNP TW", "resistance": ["0.15", "0.2", "0.3"], "price": 40000 },
+      { "model": "PNP VM", "resistance": ["0.15", "0.2", "0.3"], "price": 40000 },
+      { "model": "PNP X", "resistance": ["0.15", "0.2", "0.3"], "price": 40000 },
+      { "model": "TPP DM", "resistance": ["0.15", "0.2", "0.3"], "price": 40000 }
+    ],
+    "Movi": [
+      { "model": "Mark Zero", "resistance": ["0.3", "0.6", "0.8"], "price": 35000 }
+    ],
+    "Aspire": [
+      { "model": "Minican", "resistance": ["0.8"], "price": 40000 },
+      { "model": "Cloudflash", "resistance": ["0.17"], "price": 45000 },
+      { "model": "Cloudflash", "resistance": ["0.25"], "price": 35000 },
+      { "model": "Rill AF", "resistance": ["0.6", "1.0"], "price": 35000 },
+      { "model": "Gotek", "resistance": ["0.8"], "price": 40000 }
+    ],
+    "Joiway": [
+      { "model": "S1", "resistance": ["0.8"], "price": 40000 },
+      { "model": "X1", "resistance": ["0.6", "0.8"], "price": 40000 }
+    ],
+    "Rincoe": [
+      { "model": "Mayday", "resistance": ["0.15", "0.3"], "price": 40000 }
+    ],
+    "Uwell": [
+      { "model": "A2", "resistance": ["0.9", "1.2"], "price": 40000 },
+      { "model": "A3", "resistance": ["0.8"], "price": 40000 }
+    ],
+    "Smok": [
+      { "model": "Solus", "resistance": ["0.9"], "price": 40000 },
+      { "model": "LP2", "resistance": ["0.23"], "price": 40000 },
+      { "model": "RPM RGC", "resistance": ["0.17"], "price": 35000 },
+      { "model": "RPM", "resistance": ["0.4"], "price": 40000 }
+    ],
+    "Vandy Vape": [
+      { "model": "Gemini", "resistance": ["0.15"], "price": 50000 }
+    ],
+    "Infinity": [
+      { "model": "Lite X", "resistance": ["1.0"], "price": 25000 }
+    ]
+  },
+  "device_pod": {
+    "Trml": [
+      { "model": "T28 Bundling", "price": 200000 }
+    ],
+    "Foom": [
+      { "model": "X Bundling", "price": 200000 },
+      { "model": "X Switch Bundling", "price": 210000 },
+      { "model": "X Signature", "price": 290000 },
+      { "model": "X Prediksi Bundling", "price": 185000 },
+      { "model": "Y Bundling", "price": 300000 }
+    ],
+    "Oxva": [
+      { "model": "Xlim Go 2 Bundling", "price": 200000 },
+      { "model": "Xlim Go 2 Royal Bundling", "price": 210000 },
+      { "model": "Xlim Pro 2 DNA", "price": 465000 },
+      { "model": "Xlim Pro 3", "price": 315000 },
+      { "model": "Xlim 3 Ultra", "price": 365000 },
+      { "model": "Nexlim Go", "price": 250000 },
+      { "model": "Nexlim", "price": 360000 },
+      { "model": "Artio", "price": 250000 },
+      { "model": "SQ Pro", "price": 320000 },
+      { "model": "SQ Pro American", "price": 330000 },
+      { "model": "SQ Pro 2", "price": 360000 },
+      { "model": "Vprime", "price": 400000 }
+    ],
+    "Lost Vape": [
+      { "model": "DM45", "price": 295000 },
+      { "model": "E40", "price": 295000 },
+      { "model": "E40 Ultra", "price": 320000 },
+      { "model": "Aura S Bundling", "price": 200000 },
+      { "model": "Ursa Nano 3", "price": 185000 },
+      { "model": "Ursa Nano S", "price": 150000 },
+      { "model": "Ursa Nano Pro", "price": 200000 },
+      { "model": "T360", "price": 200000 }
+    ],
+    "Vaporesso": [
+      { "model": "Mini", "price": null },
+      { "model": "3 Nano", "price": 295000 },
+      { "model": "5 Mini", "price": 190000 },
+      { "model": "5 Mini Mukay/Bimo", "price": 215000 },
+      { "model": "5 Bimo", "price": 315000 },
+      { "model": "5 Nano", "price": 320000 },
+      { "model": "6 Bimo", "price": 325000 }
+    ],
+    "Dotmod": [
+      { "model": "Dotpod go", "price": 100000 },
+      { "model": "Dotpod go kit", "price": 300000 },
+      { "model": "Dotpod pro", "price": 365000 }
+    ],
+    "Oumier": [
+      { "model": "Wasp Nano X", "price": 100000 },
+      { "model": "Wasp Nano X Bundling", "price": 135000 }
+    ],
+    "Voopoo": [
+      { "model": "Vmate Infinity", "price": 130000 },
+      { "model": "Vinci Q", "price": null },
+      { "model": "Argus Z2", "price": 120000 }
+    ],
+    "Aspire": [
+      { "model": "Fluffi", "price": 220000 },
+      { "model": "Gotek", "price": 155000 },
+      { "model": "Minican 2", "price": 100000 }
+    ],
+    "Nix": [
+      { "model": "Pod Filter", "price": 225000 },
+      { "model": "Pod Filter Plus", "price": 475000 }
+    ],
+    "Geekvape": [
+      { "model": "Wenax M2", "price": null },
+      { "model": "Wenax K1 SE", "price": null }
+    ],
+    "Joiway": [
+      { "model": "Joi Mini", "price": 110000 }
+    ],
+    "Hannya": [
+      { "model": "Nano Pot", "price": null }
+    ],
+    "Uwel": []
+  }
+}
