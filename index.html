@@ -6,7 +6,6 @@
     <title>Katalog Vape</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* Transisi halus saat berganti tampilan */
         .product-card { transition: all 0.3s ease; }
     </style>
 </head>
@@ -17,11 +16,9 @@
             <div class="flex-1 w-full">
                 <h1 class="text-3xl font-bold text-gray-900 mb-4">Katalog Produk</h1>
                 <div class="flex flex-col sm:flex-row gap-3">
-                    <!-- Pencarian -->
                     <input type="text" id="searchInput" placeholder="Cari brand atau model..." 
                         class="w-full sm:w-1/2 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none">
                     
-                    <!-- Filter Kategori -->
                     <select id="categoryFilter" class="w-full sm:w-1/4 px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none bg-white">
                         <option value="all">Semua Kategori</option>
                         <option value="Catridge">Catridge</option>
@@ -30,7 +27,6 @@
                 </div>
             </div>
 
-            <!-- Toggle Grid/List -->
             <div class="flex bg-gray-200 rounded-lg p-1 w-fit">
                 <button id="btnGrid" class="px-4 py-2 rounded-md font-medium text-sm transition-colors bg-white shadow-sm text-blue-600" onclick="setView('grid')">
                     Grid
@@ -41,234 +37,73 @@
             </div>
         </header>
 
-        <!-- Container Produk -->
         <div id="productContainer" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            <!-- Data akan di-render di sini oleh JavaScript -->
+            <!-- Loading indicator saat fetch data -->
+            <div class="col-span-full text-center py-10 text-gray-500">Memuat data...</div>
         </div>
     </div>
 
     <script>
-        // 1. Data JSON (Disingkat untuk contoh, Anda bisa paste full JSON di sini)
-        const rawData = {
-"catridge": {
-    "Oxva": [
-      { "model": "Artio", "resistance": ["0.8"], "price": 40000 },
-      { "model": "Vprime", "resistance": ["0.2", "0.4", "0.6", "0.8"], "price": 50000 },
-      { "model": "Xlim", "resistance": ["0.4", "0.6", "0.8"], "price": 40000 },
-      { "model": "Xlim DNA", "resistance": ["0.4", "0.6", "0.8"], "price": 45000 },
-      { "model": "Oneo", "resistance": ["0.4", "0.6", "0.8"], "price": 45000 },
-      { "model": "Unipro", "resistance": ["0.15"], "price": 35000 },
-      { "model": "Unicoil", "resistance": ["0.3"], "price": 35000 }
-    ],
-    "Foom": [
-      { "model": "X", "resistance": [], "price": 35000 },
-      { "model": "X Ultra", "resistance": [], "price": 38000 },
-      { "model": "Y", "resistance": [], "price": 40000 }
-    ],
-    "Vaporesso": [
-      { "model": "Xros", "resistance": ["0.6", "0.8"], "price": 40000 }
-    ],
-    "Nixx": [
-      { "model": "Pod", "resistance": [], "price": 40000 }
-    ],
-    "Lost Vape": [
-      { "model": "Ursa nano", "resistance": ["0.6", "0.8"], "price": 40000 },
-      { "model": "Eplus", "resistance": ["0.3", "0.6", "0.8"], "price": 40000 },
-      { "model": "UB Ultra", "resistance": ["0.15", "0.2", "0.3"], "price": 35000 },
-      { "model": "UB Lite", "resistance": ["0.3", "0.6", "0.8"], "price": 35000 }
-    ],
-    "Trml": [
-      { "model": "T28", "resistance": ["0.6", "0.8"], "price": 35000 }
-    ],
-    "Orca Vape": [
-      { "model": "San Dynasty", "resistance": ["0.4", "0.6", "0.8"], "price": 40000 }
-    ],
-    "Dotmod": [
-      { "model": "Dotpod", "resistance": ["0.6", "0.8"], "price": 40000 }
-    ],
-    "Relx": [
-      { "model": "Prime", "resistance": ["0.6", "0.8"], "price": 40000 }
-    ],
-    "Geekvape": [
-      { "model": "M1", "resistance": ["0.8", "1.2"], "price": 40000 },
-      { "model": "K1", "resistance": [], "price": null },
-      { "model": "B", "resistance": ["0.3", "0.6"], "price": null }
-    ],
-    "Oumier": [
-      { "model": "Wasp Nano", "resistance": ["0.6", "0.8"], "price": 35000 }
-    ],
-    "Voopoo": [
-      { "model": "Vmate", "resistance": ["0.7"], "price": 45000 },
-      { "model": "Drag Nano", "resistance": ["0.8", "1.2"], "price": 40000 },
-      { "model": "Argus", "resistance": ["0.4", "0.7", "1.2"], "price": 40000 },
-      { "model": "PNP TW", "resistance": ["0.15", "0.2", "0.3"], "price": 40000 },
-      { "model": "PNP VM", "resistance": ["0.15", "0.2", "0.3"], "price": 40000 },
-      { "model": "PNP X", "resistance": ["0.15", "0.2", "0.3"], "price": 40000 },
-      { "model": "TPP DM", "resistance": ["0.15", "0.2", "0.3"], "price": 40000 }
-    ],
-    "Movi": [
-      { "model": "Mark Zero", "resistance": ["0.3", "0.6", "0.8"], "price": 35000 }
-    ],
-    "Aspire": [
-      { "model": "Minican", "resistance": ["0.8"], "price": 40000 },
-      { "model": "Cloudflash", "resistance": ["0.17"], "price": 45000 },
-      { "model": "Cloudflash", "resistance": ["0.25"], "price": 35000 },
-      { "model": "Rill AF", "resistance": ["0.6", "1.0"], "price": 35000 },
-      { "model": "Gotek", "resistance": ["0.8"], "price": 40000 }
-    ],
-    "Joiway": [
-      { "model": "S1", "resistance": ["0.8"], "price": 40000 },
-      { "model": "X1", "resistance": ["0.6", "0.8"], "price": 40000 }
-    ],
-    "Rincoe": [
-      { "model": "Mayday", "resistance": ["0.15", "0.3"], "price": 40000 }
-    ],
-    "Uwell": [
-      { "model": "A2", "resistance": ["0.9", "1.2"], "price": 40000 },
-      { "model": "A3", "resistance": ["0.8"], "price": 40000 }
-    ],
-    "Smok": [
-      { "model": "Solus", "resistance": ["0.9"], "price": 40000 },
-      { "model": "LP2", "resistance": ["0.23"], "price": 40000 },
-      { "model": "RPM RGC", "resistance": ["0.17"], "price": 35000 },
-      { "model": "RPM", "resistance": ["0.4"], "price": 40000 }
-    ],
-    "Vandy Vape": [
-      { "model": "Gemini", "resistance": ["0.15"], "price": 50000 }
-    ],
-    "Infinity": [
-      { "model": "Lite X", "resistance": ["1.0"], "price": 25000 }
-    ]
-  },
-  "device_pod": {
-    "Trml": [
-      { "model": "T28 Bundling", "price": 200000 }
-    ],
-    "Foom": [
-      { "model": "X Bundling", "price": 200000 },
-      { "model": "X Switch Bundling", "price": 210000 },
-      { "model": "X Signature", "price": 290000 },
-      { "model": "X Prediksi Bundling", "price": 185000 },
-      { "model": "Y Bundling", "price": 300000 }
-    ],
-    "Oxva": [
-      { "model": "Xlim Go 2 Bundling", "price": 200000 },
-      { "model": "Xlim Go 2 Royal Bundling", "price": 210000 },
-      { "model": "Xlim Pro 2 DNA", "price": 465000 },
-      { "model": "Xlim Pro 3", "price": 315000 },
-      { "model": "Xlim 3 Ultra", "price": 365000 },
-      { "model": "Nexlim Go", "price": 250000 },
-      { "model": "Nexlim", "price": 360000 },
-      { "model": "Artio", "price": 250000 },
-      { "model": "SQ Pro", "price": 320000 },
-      { "model": "SQ Pro American", "price": 330000 },
-      { "model": "SQ Pro 2", "price": 360000 },
-      { "model": "Vprime", "price": 400000 }
-    ],
-    "Lost Vape": [
-      { "model": "DM45", "price": 295000 },
-      { "model": "E40", "price": 295000 },
-      { "model": "E40 Ultra", "price": 320000 },
-      { "model": "Aura S Bundling", "price": 200000 },
-      { "model": "Ursa Nano 3", "price": 185000 },
-      { "model": "Ursa Nano S", "price": 150000 },
-      { "model": "Ursa Nano Pro", "price": 200000 },
-      { "model": "T360", "price": 200000 }
-    ],
-    "Vaporesso": [
-      { "model": "Mini", "price": null },
-      { "model": "3 Nano", "price": 295000 },
-      { "model": "5 Mini", "price": 190000 },
-      { "model": "5 Mini Mukay/Bimo", "price": 215000 },
-      { "model": "5 Bimo", "price": 315000 },
-      { "model": "5 Nano", "price": 320000 },
-      { "model": "6 Bimo", "price": 325000 }
-    ],
-    "Dotmod": [
-      { "model": "Dotpod go", "price": 100000 },
-      { "model": "Dotpod go kit", "price": 300000 },
-      { "model": "Dotpod pro", "price": 365000 }
-    ],
-    "Oumier": [
-      { "model": "Wasp Nano X", "price": 100000 },
-      { "model": "Wasp Nano X Bundling", "price": 135000 }
-    ],
-    "Voopoo": [
-      { "model": "Vmate Infinity", "price": 130000 },
-      { "model": "Vinci Q", "price": null },
-      { "model": "Argus Z2", "price": 120000 }
-    ],
-    "Aspire": [
-      { "model": "Fluffi", "price": 220000 },
-      { "model": "Gotek", "price": 155000 },
-      { "model": "Minican 2", "price": 100000 }
-    ],
-    "Nix": [
-      { "model": "Pod Filter", "price": 225000 },
-      { "model": "Pod Filter Plus", "price": 475000 }
-    ],
-    "Geekvape": [
-      { "model": "Wenax M2", "price": null },
-      { "model": "Wenax K1 SE", "price": null }
-    ],
-    "Joiway": [
-      { "model": "Joi Mini", "price": 110000 }
-    ],
-    "Hannya": [
-      { "model": "Nano Pot", "price": null }
-    ],
-    "Uwel": []
-  }
-};
-
-        // 2. Meratakan Data (Flattening) agar mudah di-filter
         let products = [];
-        for (const type in rawData) {
-            const categoryName = type === 'catridge' ? 'Catridge' : 'Device Pod';
-            for (const brand in rawData[type]) {
-                rawData[type][brand].forEach(item => {
-                    products.push({
-                        category: categoryName,
-                        brand: brand,
-                        model: item.model,
-                        resistance: (item.resistance && item.resistance.length > 0) ? item.resistance.join(', ') : '-',
-                        price: item.price ? `Rp ${item.price.toLocaleString('id-ID')}` : 'Harga tidak tersedia',
-                        rawPrice: item.price || 0
-                    });
-                });
-            }
-        }
-
-        // 3. State Management
         let currentView = localStorage.getItem('viewPreference') || 'grid';
         
-        // Elemen DOM
         const container = document.getElementById('productContainer');
         const searchInput = document.getElementById('searchInput');
         const categoryFilter = document.getElementById('categoryFilter');
         const btnGrid = document.getElementById('btnGrid');
         const btnList = document.getElementById('btnList');
 
-        // 4. Fungsi Render Data
+        // Fungsi untuk mengambil data JSON dari file eksternal
+        async function fetchProducts() {
+            try {
+                const response = await fetch('data.json');
+                if (!response.ok) throw new Error('Network response was not ok');
+                const rawData = await response.json();
+
+                // Flattening Data
+                for (const type in rawData) {
+                    const categoryName = type === 'catridge' ? 'Catridge' : 'Device Pod';
+                    for (const brand in rawData[type]) {
+                        rawData[type][brand].forEach(item => {
+                            products.push({
+                                category: categoryName,
+                                brand: brand,
+                                model: item.model,
+                                resistance: (item.resistance && item.resistance.length > 0) ? item.resistance.join(', ') : '-',
+                                price: item.price ? `Rp ${item.price.toLocaleString('id-ID')}` : 'Harga tidak tersedia',
+                                rawPrice: item.price || 0
+                            });
+                        });
+                    }
+                }
+                
+                // Render pertama kali setelah data berhasil diambil
+                setView(currentView);
+            } catch (error) {
+                console.error("Gagal memuat data:", error);
+                container.innerHTML = `<div class="col-span-full text-center py-10 text-red-500 font-semibold">
+                    Gagal memuat data (CORS/File Error). Pastikan Anda menjalankan file ini menggunakan Local Server (seperti Live Server).
+                </div>`;
+            }
+        }
+
+        // Fungsi Render Data HTML
         function renderData() {
             const searchText = searchInput.value.toLowerCase();
             const selectedCategory = categoryFilter.value;
 
-            // Proses Filter
             const filteredProducts = products.filter(p => {
                 const matchText = p.brand.toLowerCase().includes(searchText) || p.model.toLowerCase().includes(searchText);
                 const matchCategory = selectedCategory === 'all' || p.category === selectedCategory;
                 return matchText && matchCategory;
             });
 
-            // Atur class container berdasarkan view
             if (currentView === 'grid') {
                 container.className = 'grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6';
             } else {
                 container.className = 'flex flex-col gap-4';
             }
 
-            // Generate HTML Produk
             container.innerHTML = filteredProducts.map(p => `
                 <div class="product-card bg-white border border-gray-100 rounded-xl shadow-sm hover:shadow-md p-5 flex ${currentView === 'list' ? 'flex-row items-center justify-between' : 'flex-col'}">
                     <div class="${currentView === 'list' ? 'flex-1' : 'mb-4'}">
@@ -288,12 +123,11 @@
             }
         }
 
-        // 5. Fungsi Toggle View (Grid/List) dan simpan ke Cache/LocalStorage
+        // Fungsi Toggle View & Simpan ke Cache
         window.setView = function(view) {
             currentView = view;
             localStorage.setItem('viewPreference', view);
             
-            // Update UI Tombol
             if(view === 'grid') {
                 btnGrid.className = 'px-4 py-2 rounded-md font-medium text-sm transition-colors bg-white shadow-sm text-blue-600';
                 btnList.className = 'px-4 py-2 rounded-md font-medium text-sm transition-colors text-gray-600 hover:text-gray-900';
@@ -305,12 +139,12 @@
             renderData();
         }
 
-        // 6. Event Listeners
+        // Event Listeners
         searchInput.addEventListener('input', renderData);
         categoryFilter.addEventListener('change', renderData);
 
-        // Inisialisasi awal
-        setView(currentView);
+        // Eksekusi Fetch saat halaman dimuat
+        fetchProducts();
     </script>
 </body>
 </html>
